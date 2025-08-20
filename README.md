@@ -1,62 +1,75 @@
-🧠 Naive Bayes Classifier on Iris Dataset
+🧠 Naive Bayes Classifiers on Iris Dataset
 
-This project demonstrates how to use Naive Bayes (GaussianNB) from scikit-learn to classify the famous Iris dataset.
+This project demonstrates how to apply three types of Naive Bayes classifiers on the classic Iris dataset using scikit-learn:
+
+GaussianNB → Best suited for continuous features (natural fit for Iris).
+
+BernoulliNB → Works on binary features (applied here with binarization).
+
+MultinomialNB → Designed for count/discrete features (adapted here with scaling).
 
 📌 Overview
 
-Loads the Iris dataset from sklearn.datasets.
+Load the Iris dataset.
 
-Splits the data into training (70%) and testing (30%) sets.
+Split into train (70%) and test (30%) sets.
 
-Applies Gaussian Naive Bayes classifier.
+Train three Naive Bayes models: Gaussian, Bernoulli, and Multinomial.
 
-Evaluates model performance with:
+Evaluate each model with:
 
 Accuracy Score
 
-Classification Report (precision, recall, F1-score)
+Classification Report (Precision, Recall, F1-score)
 
 Confusion Matrix
 
 ⚙️ Requirements
 
-Install dependencies with:
+Install dependencies:
 
 pip install scikit-learn numpy
 
 ▶️ How to Run
 
-Save the code in a file, e.g., naive_bayes_iris.py, then run:
+Save the code in naive_bayes_variants.py and run:
 
-python naive_bayes_iris.py
+python naive_bayes_variants.py
 
-📊 Expected Output
-
-The program prints the Naive Bayes results:
-
-=== Naive Bayes ===
+📊 Example Output
+=== Gaussian Naive Bayes ===
 Accuracy: 0.96
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00        19
-           1       0.95      0.95      0.95        19
-           2       0.95      0.95      0.95        17
-
-    accuracy                           0.96        55
-   macro avg       0.96      0.96      0.96        55
-weighted avg       0.96      0.96      0.96        55
-
+...
+Confusion Matrix:
 [[19  0  0]
  [ 0 18  1]
  [ 0  1 16]]
 
+=== Bernoulli Naive Bayes ===
+Accuracy: 0.67
+...
+Confusion Matrix:
+[[19  0  0]
+ [ 0 11  8]
+ [ 0  9  8]]
 
-(numbers may vary slightly due to random splits)
+=== Multinomial Naive Bayes ===
+Accuracy: 0.91
+...
+Confusion Matrix:
+[[19  0  0]
+ [ 0 17  2]
+ [ 0  3 14]]
+
+
+(Numbers may vary depending on random split and scaling)
 
 📚 Notes
 
-The model uses Gaussian Naive Bayes, suitable for continuous features.
+GaussianNB performs best here (since features are continuous).
 
-You can easily replace it with other classifiers (like SVM, Decision Trees) to compare performance.
+BernoulliNB performs worst — binarization destroys too much information.
 
-Try experimenting with different test_size or add feature scaling for other models.
+MultinomialNB does reasonably well after scaling features into integer counts.
+
+The experiment shows how different distribution assumptions in Naive Bayes affect results.
